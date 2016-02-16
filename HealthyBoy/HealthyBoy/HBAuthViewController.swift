@@ -6,9 +6,6 @@
 //  Copyright © 2016年 jszx. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 class HBAuthViewController: UIViewController {
 
 }
