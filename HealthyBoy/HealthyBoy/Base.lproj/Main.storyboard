@@ -20,12 +20,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JtA-ru-nht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-518.39999999999998" y="299.14666666666665"/>
+            <point key="canvasLocation" x="-680" y="299"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Rpf-Wf-x3P">
             <objects>
-                <viewController id="Mz0-Zx-nb9" customClass="HBLoginViewController" customModule="HealthyBoy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HBLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mz0-Zx-nb9" customClass="HBLoginViewController" customModule="HealthyBoy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Gx-xV-eIN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,6 +41,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99436390399999997" green="0.69892089999999996" blue="0.092799929269999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="登录"/>
+                                <connections>
+                                    <segue destination="Grf-ee-l1q" kind="push" id="jhv-Gc-tUA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,6 +58,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8II-aU-gF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-332.80000000000001" y="299.14666666666665"/>
+        </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="Rr3-ZX-DuH">
+            <objects>
+                <viewController storyboardIdentifier="HBAuthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Grf-ee-l1q" customClass="HBAuthViewController" customModule="HealthyBoy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2wq-r7-tfg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Lwl-rg-15P"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bg6-bf-jvA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33" y="299"/>
         </scene>
     </scenes>
 </document>

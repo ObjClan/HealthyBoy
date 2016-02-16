@@ -30,6 +30,7 @@ class HBLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.backColor = UIColor.redColor()
         self.view.backgroundColor = self.backColor
         
@@ -49,8 +50,9 @@ class HBLoginViewController: UIViewController {
             weakSelf!.backgroundView?.setBlurLevel(0.9)
         })
         
-        let width = HBCommon.getScreenWidth() * 0.8
-        let height = HBCommon.getScreenHeight() * 0.06
+        let width = HBCommon.getCellWidth()
+        let height = HBCommon.getCellHeight()
+        
         loginBtn.snp_remakeConstraints { (make) -> Void in
             make.width.equalTo(width)
             make.height.equalTo(height)

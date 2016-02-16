@@ -17,4 +17,12 @@ class HBCommon {
     internal class func getScreenHeight() -> CGFloat {
         return UIScreen.mainScreen().bounds.height
     }
+    
+    internal class func getCellWidth() -> CGFloat {
+        return UIScreen.mainScreen().bounds.width * 0.8
+    }
+    
+    internal class func getCellHeight() -> CGFloat {
+        return UIScreen.mainScreen().bounds.height * 0.06
+    }
 }

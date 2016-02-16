@@ -32,6 +32,7 @@
 		A45C13381C7313890004D7F4 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C132A1C7313890004D7F4 /* SnapKit.swift */; };
 		A45C13391C7313890004D7F4 /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C132B1C7313890004D7F4 /* View+SnapKit.swift */; };
 		A45C133A1C7313890004D7F4 /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C132C1C7313890004D7F4 /* ViewController+SnapKit.swift */; };
+		A45C133C1C732A310004D7F4 /* HBAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C133B1C732A310004D7F4 /* HBAuthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		A45C132A1C7313890004D7F4 /* SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
 		A45C132B1C7313890004D7F4 /* View+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+SnapKit.swift"; sourceTree = "<group>"; };
 		A45C132C1C7313890004D7F4 /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SnapKit.swift"; sourceTree = "<group>"; };
+		A45C133B1C732A310004D7F4 /* HBAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAuthViewController.swift; sourceTree = "<group>"; };
 		E5689B9AF37A17BFC23848B4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				A45C13031C716B730004D7F4 /* HBLoginViewController.swift */,
+				A45C133B1C732A310004D7F4 /* HBAuthViewController.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				A45C13391C7313890004D7F4 /* View+SnapKit.swift in Sources */,
 				A45C13371C7313890004D7F4 /* LayoutConstraint.swift in Sources */,
 				A45C13321C7313890004D7F4 /* ConstraintItem.swift in Sources */,
+				A45C133C1C732A310004D7F4 /* HBAuthViewController.swift in Sources */,
 				A45C133A1C7313890004D7F4 /* ViewController+SnapKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
