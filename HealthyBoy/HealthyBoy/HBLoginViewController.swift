@@ -7,7 +7,7 @@
 //
 
 
-class HBLoginViewController: UIViewController {
+class HBLoginViewController: HBBaseViewController {
     
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
@@ -27,8 +27,7 @@ class HBLoginViewController: UIViewController {
     var backgroundView: DKLiveBlurView?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        
         self.backColor = UIColor.redColor()
         self.view.backgroundColor = self.backColor
         
@@ -62,7 +61,7 @@ class HBLoginViewController: UIViewController {
             make.width.equalTo(loginBtn)
             make.height.equalTo(loginBtn)
             make.centerX.equalTo(loginBtn)
-            make.bottom.equalTo(loginBtn.snp_top).offset(-height * 0.3)
+            make.bottom.equalTo(loginBtn.snp_top).offset(-HBCommon.getCellMarge())
         }
     }
     

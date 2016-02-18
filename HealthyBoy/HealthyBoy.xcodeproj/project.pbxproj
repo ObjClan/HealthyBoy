@@ -33,6 +33,29 @@
 		A45C13391C7313890004D7F4 /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C132B1C7313890004D7F4 /* View+SnapKit.swift */; };
 		A45C133A1C7313890004D7F4 /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C132C1C7313890004D7F4 /* ViewController+SnapKit.swift */; };
 		A45C133C1C732A310004D7F4 /* HBAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C133B1C732A310004D7F4 /* HBAuthViewController.swift */; };
+		A45C133E1C740ABD0004D7F4 /* HBBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C133D1C740ABD0004D7F4 /* HBBaseViewController.swift */; };
+		A45C13411C741F510004D7F4 /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A45C13401C741F510004D7F4 /* UIColor+Extension.m */; };
+		A45C13461C745F460004D7F4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45C13451C745F460004D7F4 /* CoreLocation.framework */; };
+		A45C13481C745F520004D7F4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45C13471C745F520004D7F4 /* SystemConfiguration.framework */; };
+		A45C134A1C745F5A0004D7F4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45C13491C745F5A0004D7F4 /* CoreData.framework */; };
+		A45C134C1C745F620004D7F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45C134B1C745F620004D7F4 /* CFNetwork.framework */; };
+		A45C134E1C745F700004D7F4 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A45C134D1C745F700004D7F4 /* libresolv.9.tbd */; };
+		A45C13501C745F780004D7F4 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A45C134F1C745F780004D7F4 /* libxml2.2.tbd */; };
+		A45C13521C745F820004D7F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45C13511C745F820004D7F4 /* CoreGraphics.framework */; };
+		A45C13541C7467A50004D7F4 /* HBCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13531C7467A50004D7F4 /* HBCenterController.swift */; };
+		A45C13571C74719E0004D7F4 /* HBMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13561C74719E0004D7F4 /* HBMessage.swift */; };
+		A45C13591C7472A70004D7F4 /* HBUserStatusDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13581C7472A70004D7F4 /* HBUserStatusDelegate.swift */; };
+		A45C135B1C7472BA0004D7F4 /* HBMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C135A1C7472BA0004D7F4 /* HBMessageDelegate.swift */; };
+		A45C135D1C756E200004D7F4 /* HBContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C135C1C756E200004D7F4 /* HBContactsViewController.swift */; };
+		A45C13651C7590FC0004D7F4 /* tab4_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C13611C7590FC0004D7F4 /* tab4_normal@2x.png */; };
+		A45C13661C7590FC0004D7F4 /* tab4_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C13621C7590FC0004D7F4 /* tab4_normal@3x.png */; };
+		A45C13671C7590FC0004D7F4 /* tab4_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C13631C7590FC0004D7F4 /* tab4_selected@2x.png */; };
+		A45C13681C7590FC0004D7F4 /* tab4_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C13641C7590FC0004D7F4 /* tab4_selected@3x.png */; };
+		A45C136D1C75911A0004D7F4 /* tab1_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C13691C75911A0004D7F4 /* tab1_normal@2x.png */; };
+		A45C136E1C75911A0004D7F4 /* tab1_normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C136A1C75911A0004D7F4 /* tab1_normal@3x.png */; };
+		A45C136F1C75911A0004D7F4 /* tab1_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C136B1C75911A0004D7F4 /* tab1_selected@2x.png */; };
+		A45C13701C75911A0004D7F4 /* tab1_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C136C1C75911A0004D7F4 /* tab1_selected@3x.png */; };
+		A45C13721C75A8E70004D7F4 /* HBMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13711C75A8E70004D7F4 /* HBMainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +90,30 @@
 		A45C132B1C7313890004D7F4 /* View+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+SnapKit.swift"; sourceTree = "<group>"; };
 		A45C132C1C7313890004D7F4 /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SnapKit.swift"; sourceTree = "<group>"; };
 		A45C133B1C732A310004D7F4 /* HBAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAuthViewController.swift; sourceTree = "<group>"; };
+		A45C133D1C740ABD0004D7F4 /* HBBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBBaseViewController.swift; sourceTree = "<group>"; };
+		A45C133F1C741F510004D7F4 /* UIColor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extension.h"; sourceTree = "<group>"; };
+		A45C13401C741F510004D7F4 /* UIColor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extension.m"; sourceTree = "<group>"; };
+		A45C13451C745F460004D7F4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A45C13471C745F520004D7F4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A45C13491C745F5A0004D7F4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A45C134B1C745F620004D7F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A45C134D1C745F700004D7F4 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
+		A45C134F1C745F780004D7F4 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		A45C13511C745F820004D7F4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A45C13531C7467A50004D7F4 /* HBCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBCenterController.swift; sourceTree = "<group>"; };
+		A45C13561C74719E0004D7F4 /* HBMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBMessage.swift; sourceTree = "<group>"; };
+		A45C13581C7472A70004D7F4 /* HBUserStatusDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBUserStatusDelegate.swift; sourceTree = "<group>"; };
+		A45C135A1C7472BA0004D7F4 /* HBMessageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBMessageDelegate.swift; sourceTree = "<group>"; };
+		A45C135C1C756E200004D7F4 /* HBContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBContactsViewController.swift; sourceTree = "<group>"; };
+		A45C13611C7590FC0004D7F4 /* tab4_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab4_normal@2x.png"; sourceTree = "<group>"; };
+		A45C13621C7590FC0004D7F4 /* tab4_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab4_normal@3x.png"; sourceTree = "<group>"; };
+		A45C13631C7590FC0004D7F4 /* tab4_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab4_selected@2x.png"; sourceTree = "<group>"; };
+		A45C13641C7590FC0004D7F4 /* tab4_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab4_selected@3x.png"; sourceTree = "<group>"; };
+		A45C13691C75911A0004D7F4 /* tab1_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1_normal@2x.png"; sourceTree = "<group>"; };
+		A45C136A1C75911A0004D7F4 /* tab1_normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1_normal@3x.png"; sourceTree = "<group>"; };
+		A45C136B1C75911A0004D7F4 /* tab1_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1_selected@2x.png"; sourceTree = "<group>"; };
+		A45C136C1C75911A0004D7F4 /* tab1_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1_selected@3x.png"; sourceTree = "<group>"; };
+		A45C13711C75A8E70004D7F4 /* HBMainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBMainTabBarController.swift; sourceTree = "<group>"; };
 		E5689B9AF37A17BFC23848B4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,6 +122,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A45C13521C745F820004D7F4 /* CoreGraphics.framework in Frameworks */,
+				A45C13501C745F780004D7F4 /* libxml2.2.tbd in Frameworks */,
+				A45C134E1C745F700004D7F4 /* libresolv.9.tbd in Frameworks */,
+				A45C134C1C745F620004D7F4 /* CFNetwork.framework in Frameworks */,
+				A45C134A1C745F5A0004D7F4 /* CoreData.framework in Frameworks */,
+				A45C13481C745F520004D7F4 /* SystemConfiguration.framework in Frameworks */,
+				A45C13461C745F460004D7F4 /* CoreLocation.framework in Frameworks */,
 				A45C131C1C72D6A10004D7F4 /* Foundation.framework in Frameworks */,
 				A45C131A1C72D69B0004D7F4 /* UIKit.framework in Frameworks */,
 				807D87C5D14EF26C41442901 /* Pods.framework in Frameworks */,
@@ -87,6 +141,15 @@
 		8F187D65190129D865DF5242 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A45C131B1C72D6A10004D7F4 /* Foundation.framework */,
+				A45C13191C72D69B0004D7F4 /* UIKit.framework */,
+				A45C13511C745F820004D7F4 /* CoreGraphics.framework */,
+				A45C134F1C745F780004D7F4 /* libxml2.2.tbd */,
+				A45C134D1C745F700004D7F4 /* libresolv.9.tbd */,
+				A45C134B1C745F620004D7F4 /* CFNetwork.framework */,
+				A45C13491C745F5A0004D7F4 /* CoreData.framework */,
+				A45C13471C745F520004D7F4 /* SystemConfiguration.framework */,
+				A45C13451C745F460004D7F4 /* CoreLocation.framework */,
 				E5689B9AF37A17BFC23848B4 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -113,12 +176,15 @@
 		A45C12EE1C7168AA0004D7F4 /* HealthyBoy */ = {
 			isa = PBXGroup;
 			children = (
-				A45C13181C72D6810004D7F4 /* systemFramework */,
+				A45C13601C7579AB0004D7F4 /* home */,
+				A45C135F1C7579910004D7F4 /* contacts */,
+				A45C13551C74718A0004D7F4 /* xmpp */,
 				A45C13151C72D5820004D7F4 /* common */,
 				A45C13141C72D4970004D7F4 /* other */,
 				A45C13131C72D20D0004D7F4 /* login */,
 				A45C13121C72D1BF0004D7F4 /* srouce */,
 				A45C13101C72D18A0004D7F4 /* thirdClasses */,
+				A45C13531C7467A50004D7F4 /* HBCenterController.swift */,
 			);
 			path = HealthyBoy;
 			sourceTree = "<group>";
@@ -126,6 +192,7 @@
 		A45C13101C72D18A0004D7F4 /* thirdClasses */ = {
 			isa = PBXGroup;
 			children = (
+				A45C13441C7426B40004D7F4 /* color */,
 				A45C131D1C7313890004D7F4 /* SnapKit */,
 				A45C13111C72D1AA0004D7F4 /* view */,
 			);
@@ -144,6 +211,14 @@
 		A45C13121C72D1BF0004D7F4 /* srouce */ = {
 			isa = PBXGroup;
 			children = (
+				A45C13691C75911A0004D7F4 /* tab1_normal@2x.png */,
+				A45C136A1C75911A0004D7F4 /* tab1_normal@3x.png */,
+				A45C136B1C75911A0004D7F4 /* tab1_selected@2x.png */,
+				A45C136C1C75911A0004D7F4 /* tab1_selected@3x.png */,
+				A45C13611C7590FC0004D7F4 /* tab4_normal@2x.png */,
+				A45C13621C7590FC0004D7F4 /* tab4_normal@3x.png */,
+				A45C13631C7590FC0004D7F4 /* tab4_selected@2x.png */,
+				A45C13641C7590FC0004D7F4 /* tab4_selected@3x.png */,
 				A45C12FB1C7168AA0004D7F4 /* Info.plist */,
 				A45C12F31C7168AA0004D7F4 /* Main.storyboard */,
 				A45C12F61C7168AA0004D7F4 /* Assets.xcassets */,
@@ -175,17 +250,10 @@
 			isa = PBXGroup;
 			children = (
 				A45C13161C72D5CE0004D7F4 /* HBCommon.swift */,
+				A45C133D1C740ABD0004D7F4 /* HBBaseViewController.swift */,
+				A45C13711C75A8E70004D7F4 /* HBMainTabBarController.swift */,
 			);
 			name = common;
-			sourceTree = "<group>";
-		};
-		A45C13181C72D6810004D7F4 /* systemFramework */ = {
-			isa = PBXGroup;
-			children = (
-				A45C131B1C72D6A10004D7F4 /* Foundation.framework */,
-				A45C13191C72D69B0004D7F4 /* UIKit.framework */,
-			);
-			name = systemFramework;
 			sourceTree = "<group>";
 		};
 		A45C131D1C7313890004D7F4 /* SnapKit */ = {
@@ -215,6 +283,48 @@
 				A45C132C1C7313890004D7F4 /* ViewController+SnapKit.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		A45C13441C7426B40004D7F4 /* color */ = {
+			isa = PBXGroup;
+			children = (
+				A45C133F1C741F510004D7F4 /* UIColor+Extension.h */,
+				A45C13401C741F510004D7F4 /* UIColor+Extension.m */,
+			);
+			name = color;
+			sourceTree = "<group>";
+		};
+		A45C13551C74718A0004D7F4 /* xmpp */ = {
+			isa = PBXGroup;
+			children = (
+				A45C13561C74719E0004D7F4 /* HBMessage.swift */,
+				A45C13581C7472A70004D7F4 /* HBUserStatusDelegate.swift */,
+				A45C135A1C7472BA0004D7F4 /* HBMessageDelegate.swift */,
+			);
+			name = xmpp;
+			sourceTree = "<group>";
+		};
+		A45C135E1C756E3F0004D7F4 /* conroller */ = {
+			isa = PBXGroup;
+			children = (
+				A45C135C1C756E200004D7F4 /* HBContactsViewController.swift */,
+			);
+			name = conroller;
+			sourceTree = "<group>";
+		};
+		A45C135F1C7579910004D7F4 /* contacts */ = {
+			isa = PBXGroup;
+			children = (
+				A45C135E1C756E3F0004D7F4 /* conroller */,
+			);
+			name = contacts;
+			sourceTree = "<group>";
+		};
+		A45C13601C7579AB0004D7F4 /* home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = home;
 			sourceTree = "<group>";
 		};
 		B3621B152587FDB3763957E5 /* Pods */ = {
@@ -288,10 +398,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A45C12FA1C7168AA0004D7F4 /* LaunchScreen.storyboard in Resources */,
+				A45C136D1C75911A0004D7F4 /* tab1_normal@2x.png in Resources */,
+				A45C136E1C75911A0004D7F4 /* tab1_normal@3x.png in Resources */,
 				A45C13081C717E800004D7F4 /* 1.png in Resources */,
+				A45C13651C7590FC0004D7F4 /* tab4_normal@2x.png in Resources */,
+				A45C136F1C75911A0004D7F4 /* tab1_selected@2x.png in Resources */,
 				A45C12F71C7168AA0004D7F4 /* Assets.xcassets in Resources */,
+				A45C13671C7590FC0004D7F4 /* tab4_selected@2x.png in Resources */,
+				A45C13661C7590FC0004D7F4 /* tab4_normal@3x.png in Resources */,
+				A45C13681C7590FC0004D7F4 /* tab4_selected@3x.png in Resources */,
 				A45C12F51C7168AA0004D7F4 /* Main.storyboard in Resources */,
 				A45C132D1C7313890004D7F4 /* LICENSE in Resources */,
+				A45C13701C75911A0004D7F4 /* tab1_selected@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,18 +474,26 @@
 				A45C13341C7313890004D7F4 /* ConstraintRelation.swift in Sources */,
 				A45C13171C72D5CE0004D7F4 /* HBCommon.swift in Sources */,
 				A45C13301C7313890004D7F4 /* ConstraintAttributes.swift in Sources */,
+				A45C13721C75A8E70004D7F4 /* HBMainTabBarController.swift in Sources */,
 				A45C13041C716B730004D7F4 /* HBLoginViewController.swift in Sources */,
+				A45C13411C741F510004D7F4 /* UIColor+Extension.m in Sources */,
+				A45C135B1C7472BA0004D7F4 /* HBMessageDelegate.swift in Sources */,
 				A45C13381C7313890004D7F4 /* SnapKit.swift in Sources */,
+				A45C13571C74719E0004D7F4 /* HBMessage.swift in Sources */,
 				A45C132E1C7313890004D7F4 /* README.md in Sources */,
 				A45C12F01C7168AA0004D7F4 /* AppDelegate.swift in Sources */,
 				A45C130F1C72BF7F0004D7F4 /* DKLiveBlurView.m in Sources */,
+				A45C13541C7467A50004D7F4 /* HBCenterController.swift in Sources */,
 				A45C13311C7313890004D7F4 /* ConstraintDescription.swift in Sources */,
 				A45C13351C7313890004D7F4 /* Debugging.swift in Sources */,
 				A45C13391C7313890004D7F4 /* View+SnapKit.swift in Sources */,
 				A45C13371C7313890004D7F4 /* LayoutConstraint.swift in Sources */,
+				A45C135D1C756E200004D7F4 /* HBContactsViewController.swift in Sources */,
 				A45C13321C7313890004D7F4 /* ConstraintItem.swift in Sources */,
 				A45C133C1C732A310004D7F4 /* HBAuthViewController.swift in Sources */,
+				A45C13591C7472A70004D7F4 /* HBUserStatusDelegate.swift in Sources */,
 				A45C133A1C7313890004D7F4 /* ViewController+SnapKit.swift in Sources */,
+				A45C133E1C740ABD0004D7F4 /* HBBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
