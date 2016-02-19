@@ -39,6 +39,7 @@ class HBAuthViewController: HBBaseViewController{
         let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appdelegate.connect(accountTF.text!, password: pwdTF.text!)
         
+        HBCenterController.sharedInstance().username = accountTF.text
         self.performSegueWithIdentifier("loginAuthSegue", sender: self)
     }
     

@@ -44,6 +44,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         xmppStream?.sendElement(presence)
     }
     
+    func sendMessage(msg: String, fromUser: String,toUser: String) {
+        //XMPPFramework主要是通过KissXML来生成XML文件
+        //生成<body>文档
+        let body:DDXMLElement = DDXMLElement.elementWithName("body") as! DDXMLElement
+        body.setStringValue(msg)
+        
+        //生成XML消息文档
+        let mes:DDXMLElement = DDXMLElement.elementWithName("message")as! DDXMLElement
+        //消息类型
+        mes.addAttributeWithName("type",stringValue:"chat")
+        //发送给谁
+        mes.addAttributeWithName("to" ,stringValue:toUser)
+    
+        //由谁发送
+        mes.addAttributeWithName("from" ,stringValue:fromUser)
+        //组合
+        mes.addChild(body)
+        
+        //发送消息
+        self.xmppStream?.sendElement(mes)
+    }
+    
     //链接服务器(查看服务器是否可连接)
     func connect(user : String!,password : String!) ->Bool {
         buildStream()
@@ -114,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         
         //如果状态不是自己的
         if (user != myUser) {
-            
+            NSLog(presence.from().user + "," + presence.type())
             //保存状态
             var status = HBUserStatus()
             status.name = user + "@" + domain
@@ -155,6 +177,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
             statusDelegate!.receiveFriendStatus(status)
         }
 
+    }
+    
+    func xmppStream(sender: XMPPStream!, didReceiveIQ iq: XMPPIQ!) -> Bool {
+        return true
     }
     
     //收到消息

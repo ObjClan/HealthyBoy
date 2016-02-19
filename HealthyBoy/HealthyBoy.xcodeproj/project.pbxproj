@@ -56,6 +56,7 @@
 		A45C136F1C75911A0004D7F4 /* tab1_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C136B1C75911A0004D7F4 /* tab1_selected@2x.png */; };
 		A45C13701C75911A0004D7F4 /* tab1_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C136C1C75911A0004D7F4 /* tab1_selected@3x.png */; };
 		A45C13721C75A8E70004D7F4 /* HBMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13711C75A8E70004D7F4 /* HBMainTabBarController.swift */; };
+		A45C13741C76C98E0004D7F4 /* HBChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13731C76C98E0004D7F4 /* HBChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,7 @@
 		A45C136B1C75911A0004D7F4 /* tab1_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1_selected@2x.png"; sourceTree = "<group>"; };
 		A45C136C1C75911A0004D7F4 /* tab1_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1_selected@3x.png"; sourceTree = "<group>"; };
 		A45C13711C75A8E70004D7F4 /* HBMainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBMainTabBarController.swift; sourceTree = "<group>"; };
+		A45C13731C76C98E0004D7F4 /* HBChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBChatViewController.swift; sourceTree = "<group>"; };
 		E5689B9AF37A17BFC23848B4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -308,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				A45C135C1C756E200004D7F4 /* HBContactsViewController.swift */,
+				A45C13731C76C98E0004D7F4 /* HBChatViewController.swift */,
 			);
 			name = conroller;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				A45C133C1C732A310004D7F4 /* HBAuthViewController.swift in Sources */,
 				A45C13591C7472A70004D7F4 /* HBUserStatusDelegate.swift in Sources */,
 				A45C133A1C7313890004D7F4 /* ViewController+SnapKit.swift in Sources */,
+				A45C13741C76C98E0004D7F4 /* HBChatViewController.swift in Sources */,
 				A45C133E1C740ABD0004D7F4 /* HBBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,8 @@ class HBContactsViewController: HBBaseViewController,UITableViewDataSource,UITab
     let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var userList = NSMutableArray()
     var unreadMessageList = [HBMessage]()
-    
+    var toChatFriend : String?
+//    var toChatController : HBChatViewController?
     
     override func viewDidLoad() {
         
@@ -69,8 +70,12 @@ class HBContactsViewController: HBBaseViewController,UITableViewDataSource,UITab
         return cell!
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        toChatFriend = userList[indexPath.row]["name"] as? String
+            
         self.navigationController?.tabBarItem.badgeValue = nil
         
+        self.performSegueWithIdentifier("contactsToChat", sender: self)
     }
     
     //收到好友状态改变，刷新数据
@@ -85,9 +90,34 @@ class HBContactsViewController: HBBaseViewController,UITableViewDataSource,UITab
         if aMsg.body != "" {
             unreadMessageList.append(aMsg)
             self.tableView.reloadData()
+            
+            //如果聊天窗口打开，向当前聊天窗口传递聊天信息,并刷新数据
+            var currentChatController : HBChatViewController?
+            for controller in (self.navigationController?.childViewControllers)! {
+                if controller.isKindOfClass(HBChatViewController) {
+                    
+                    currentChatController = controller as? HBChatViewController
+                    
+                    currentChatController?.unreadList = unreadMessageList
+                    currentChatController?.currentFriendUnreadList.removeAll()
+                    for msg in (currentChatController?.unreadList)! {
+                        if msg.from == toChatFriend {
+                            currentChatController!.currentFriendUnreadList.append(msg)
+                        }
+                    }
+                    currentChatController?.tableView.reloadData()
+                }
+            }
+            
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let toChatController = segue.destinationViewController as? HBChatViewController
+        toChatController!.unreadList = unreadMessageList
+        toChatController!.name = toChatFriend
+        
+    }
     deinit {
         NSLog("HBContactsViewController deinit")
     }

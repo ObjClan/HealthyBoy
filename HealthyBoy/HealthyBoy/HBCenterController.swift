@@ -9,7 +9,7 @@
 class HBCenterController {
     internal let hostName = "localhost"
     internal let domain = "object.local"
-
+    var username: String?
     //单例
     private static let _sharedInstance = HBCenterController()
     class func sharedInstance() ->HBCenterController {
