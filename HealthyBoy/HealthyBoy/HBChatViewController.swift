@@ -117,19 +117,21 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         
         let messagelabel = cell?.contentView.viewWithTag(1) as! UILabel
         messagelabel.backgroundColor = UIColor.clearColor()
+        NSLog(currentFriendUnreadList[indexPath.row].body)
         messagelabel.text = currentFriendUnreadList[indexPath.row].body
+        
         let rect = boundingTextRect(messagelabel.text!, font: messagelabel.font, size: CGSizeMake((cell?.contentView.frame.size.width)! * 0.7, 0))
         
         let iconView = cell?.contentView.viewWithTag(3) as! UIImageView
         iconView.image = UIImage(named: "xiaohua")
-        iconView.snp_makeConstraints { (make) -> Void in
+        iconView.snp_remakeConstraints { (make) -> Void in
             make.left.equalTo((cell?.contentView)!).offset(10)
             make.bottom.equalTo(messagelabel).offset(20)
         }
         
         
-        messagelabel.snp_makeConstraints { (make) -> Void in
-            make.centerY.equalTo((cell?.contentView)!)
+        messagelabel.snp_remakeConstraints { (make) -> Void in
+            make.top.equalTo((cell?.contentView)!).offset(10)
             make.left.equalTo(iconView.snp_right).offset(20)
             make.height.equalTo(rect.height)
         }
@@ -137,7 +139,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         let msgBackgroundView = cell?.contentView.viewWithTag(2) as! UIImageView
         msgBackgroundView.image = UIImage(named: "yoububble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
         
-        msgBackgroundView.snp_makeConstraints { (make) -> Void in
+        msgBackgroundView.snp_remakeConstraints { (make) -> Void in
             make.top.equalTo(messagelabel).offset(-5)
             make.bottom.equalTo(messagelabel).offset(10)
             make.left.equalTo(messagelabel).offset(-15)
@@ -148,7 +150,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 500
     }
     
     //键盘遮挡输入框处理、autoLayout动画
