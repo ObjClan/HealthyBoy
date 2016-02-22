@@ -162,7 +162,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             make.height.equalTo(60)
         }
         
-        UIView.animateWithDuration(1) { () -> Void in
+        UIView.animateWithDuration(0.5) { () -> Void in
             self.view.layoutIfNeeded()
         }
     
@@ -175,7 +175,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             make.bottom.equalTo(view)
             make.height.equalTo(60)
         }
-        UIView.animateWithDuration(1) { () -> Void in
+        UIView.animateWithDuration(0.5) { () -> Void in
             self.view.layoutIfNeeded()
         }
     }

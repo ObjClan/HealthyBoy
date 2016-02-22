@@ -62,8 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         //组合
         mes.addChild(body)
         
-        let sendTime:DDXMLElement = DDXMLElement.elementWithName("time") as! DDXMLElement
-        sendTime.setStringValue("\(NSTimeIntervalSince1970)")
+        let sendTime:DDXMLElement = DDXMLElement.elementWithName("sendTime") as! DDXMLElement
+        sendTime.setStringValue("\(NSDate().timeIntervalSince1970)")
         mes.addChild(sendTime)
         //发送消息
         self.xmppStream?.sendElement(mes)
