@@ -10,23 +10,23 @@ import Foundation
 import UIKit
 
 class HBCommon {
-    internal class func getScreenWidth() -> CGFloat {
+    class func getScreenWidth() -> CGFloat {
         return UIScreen.mainScreen().bounds.width
     }
     
-    internal class func getScreenHeight() -> CGFloat {
+    class func getScreenHeight() -> CGFloat {
         return UIScreen.mainScreen().bounds.height
     }
     
-    internal class func getCellWidth() -> CGFloat {
+    class func getCellWidth() -> CGFloat {
         return UIScreen.mainScreen().bounds.width * 0.8
     }
     
-    internal class func getCellHeight() -> CGFloat {
+    class func getCellHeight() -> CGFloat {
         return UIScreen.mainScreen().bounds.height * 0.06
     }
     
-    internal class func getCellMarge() -> CGFloat {
+    class func getCellMarge() -> CGFloat {
         return HBCommon.getCellHeight() * 0.3
     }
 }

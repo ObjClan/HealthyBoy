@@ -62,6 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         //组合
         mes.addChild(body)
         
+        let sendTime:DDXMLElement = DDXMLElement.elementWithName("time") as! DDXMLElement
+        sendTime.setStringValue("\(NSTimeIntervalSince1970)")
+        mes.addChild(sendTime)
         //发送消息
         self.xmppStream?.sendElement(mes)
     }
@@ -122,6 +125,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     //收到状态
     func xmppStream(sender: XMPPStream!, didReceivePresence presence: XMPPPresence!) {
         
+        print("账号:\(presence.from().user),type:\(presence.type())")
+        
         //我自己的用户名
         let myUser = sender.myJID.user
         
@@ -136,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         
         //如果状态不是自己的
         if (user != myUser) {
-            NSLog(presence.from().user + "," + presence.type())
+           
             //保存状态
             var status = HBUserStatus()
             status.name = user + "@" + domain
@@ -204,6 +209,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
             }
             
             msg.from = message.from().user + "@" + message.from().domain
+            
+            if message.elementForName("sendTime") != nil {
+                msg.sendTime = message.elementForName("sendTime").stringValue()
+            }
+            
             
             //添加到消息代理中
             messageDelegate?.newMsg(msg)

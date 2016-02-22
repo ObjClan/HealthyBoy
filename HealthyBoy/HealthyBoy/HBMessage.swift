@@ -8,6 +8,7 @@
 
 //消息结构
 struct HBMessage {
+    var sendTime = ""
     var body = ""
     var from = ""
     var isComposing = false  //正在输入

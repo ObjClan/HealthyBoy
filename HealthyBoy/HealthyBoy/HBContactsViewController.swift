@@ -11,11 +11,11 @@
 class HBContactsViewController: HBBaseViewController,UITableViewDataSource,UITableViewDelegate,HBUserStatusDelegate,HBMessageDelegate {
     
     let tableView = UITableView()
-    let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    var userList = NSMutableArray()
-    var unreadMessageList = [HBMessage]()
-    var toChatFriend : String?
-//    var toChatController : HBChatViewController?
+    private let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var userList = NSMutableArray()          //好友列表
+    var unreadMessageList = [HBMessage]()    //未读消息
+    var toChatFriend : String?               //正在聊天好友
+
     
     override func viewDidLoad() {
         
@@ -106,6 +106,9 @@ class HBContactsViewController: HBBaseViewController,UITableViewDataSource,UITab
                         }
                     }
                     currentChatController?.tableView.reloadData()
+                    
+                    //滚动到表格最后一行
+                    currentChatController?.tableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: currentChatController!.currentFriendUnreadList.count - 1, inSection: 0), atScrollPosition:UITableViewScrollPosition.Bottom,animated:true)
                 }
             }
             
