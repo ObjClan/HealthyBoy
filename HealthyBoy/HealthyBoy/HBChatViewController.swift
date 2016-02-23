@@ -108,6 +108,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             let messageLabel = UILabel()
             messageLabel.tag = 1
             messageLabel.numberOfLines = 0
+            
             //有符号时计算rect需要设置
             messageLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
 
@@ -125,7 +126,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
 
         messagelabel.text = historyMessageList[indexPath.row].body
         
-        let rect = boundingTextRect(messagelabel, size: CGSizeMake((cell?.contentView.frame.size.width)! * 0.7, CGFloat(MAXFLOAT)))
+        let rect = boundingTextRect(messagelabel, size: CGSizeMake((cell?.contentView.frame.size.width)! * 0.65, CGFloat(MAXFLOAT)))
         
         let iconView = cell?.contentView.viewWithTag(3) as! UIImageView
         
@@ -142,7 +143,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
                 make.top.equalTo((cell?.contentView)!).offset(10)
                 make.left.equalTo(iconView.snp_right).offset(20)
                 make.height.equalTo(rect.height)
-                make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.7)
+                make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.65)
             }
             
             msgBackgroundView.image = UIImage(named: "yoububble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
@@ -158,7 +159,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
                 make.top.equalTo((cell?.contentView)!).offset(10)
                 make.right.equalTo(iconView.snp_left).offset(-20)
                 make.height.equalTo(rect.height)
-                make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.7)
+                make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.65)
             }
             
             msgBackgroundView.image = UIImage(named: "mebubble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
@@ -172,7 +173,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             make.left.equalTo(messagelabel).offset(-20)
             make.right.equalTo(messagelabel).offset(25)
         }
-//        messagelabel.backgroundColor = UIColor.redColor()
+        messagelabel.backgroundColor = UIColor.redColor()
 //        msgBackgroundView.backgroundColor = UIColor.greenColor()
     
         return cell!
