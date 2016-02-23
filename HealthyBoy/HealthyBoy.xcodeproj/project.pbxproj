@@ -61,6 +61,11 @@
 		A45C137F1C7AF6B20004D7F4 /* xiaoming.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C13791C7AF6B20004D7F4 /* xiaoming.png */; };
 		A45C13801C7AF6B20004D7F4 /* yoububble.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C137A1C7AF6B20004D7F4 /* yoububble.png */; };
 		A45C13811C7AF6B20004D7F4 /* yoububble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A45C137B1C7AF6B20004D7F4 /* yoububble@2x.png */; };
+		A45C13891C7BF61F0004D7F4 /* HBCoreModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A45C13871C7BF61F0004D7F4 /* HBCoreModel.xcdatamodeld */; };
+		A45C13941C7BF9E80004D7F4 /* HBHistoryMessage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13921C7BF9E80004D7F4 /* HBHistoryMessage+CoreDataProperties.swift */; };
+		A45C13951C7BF9E80004D7F4 /* HBHistoryMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13931C7BF9E80004D7F4 /* HBHistoryMessage.swift */; };
+		A45C13981C7BFC780004D7F4 /* HBHistoryMessageMannager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13971C7BFC780004D7F4 /* HBHistoryMessageMannager.swift */; };
+		A4EA183D1C7C579B0028E62A /* HBAddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA183C1C7C579B0028E62A /* HBAddContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +129,11 @@
 		A45C13791C7AF6B20004D7F4 /* xiaoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaoming.png; sourceTree = "<group>"; };
 		A45C137A1C7AF6B20004D7F4 /* yoububble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yoububble.png; sourceTree = "<group>"; };
 		A45C137B1C7AF6B20004D7F4 /* yoububble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yoububble@2x.png"; sourceTree = "<group>"; };
+		A45C13881C7BF61F0004D7F4 /* HBCoreModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HBCoreModel.xcdatamodel; sourceTree = "<group>"; };
+		A45C13921C7BF9E80004D7F4 /* HBHistoryMessage+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HBHistoryMessage+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A45C13931C7BF9E80004D7F4 /* HBHistoryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBHistoryMessage.swift; sourceTree = "<group>"; };
+		A45C13971C7BFC780004D7F4 /* HBHistoryMessageMannager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBHistoryMessageMannager.swift; sourceTree = "<group>"; };
+		A4EA183C1C7C579B0028E62A /* HBAddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAddContactViewController.swift; sourceTree = "<group>"; };
 		E5689B9AF37A17BFC23848B4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -186,6 +196,7 @@
 		A45C12EE1C7168AA0004D7F4 /* HealthyBoy */ = {
 			isa = PBXGroup;
 			children = (
+				A45C13961C7BFBF40004D7F4 /* coreData */,
 				A45C13601C7579AB0004D7F4 /* home */,
 				A45C135F1C7579910004D7F4 /* contacts */,
 				A45C13551C74718A0004D7F4 /* xmpp */,
@@ -323,6 +334,7 @@
 			children = (
 				A45C135C1C756E200004D7F4 /* HBContactsViewController.swift */,
 				A45C13731C76C98E0004D7F4 /* HBChatViewController.swift */,
+				A4EA183C1C7C579B0028E62A /* HBAddContactViewController.swift */,
 			);
 			name = conroller;
 			sourceTree = "<group>";
@@ -340,6 +352,17 @@
 			children = (
 			);
 			name = home;
+			sourceTree = "<group>";
+		};
+		A45C13961C7BFBF40004D7F4 /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				A45C13971C7BFC780004D7F4 /* HBHistoryMessageMannager.swift */,
+				A45C13871C7BF61F0004D7F4 /* HBCoreModel.xcdatamodeld */,
+				A45C13921C7BF9E80004D7F4 /* HBHistoryMessage+CoreDataProperties.swift */,
+				A45C13931C7BF9E80004D7F4 /* HBHistoryMessage.swift */,
+			);
+			name = coreData;
 			sourceTree = "<group>";
 		};
 		B3621B152587FDB3763957E5 /* Pods */ = {
@@ -488,10 +511,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A45C13941C7BF9E80004D7F4 /* HBHistoryMessage+CoreDataProperties.swift in Sources */,
 				A45C13361C7313890004D7F4 /* EdgeInsets.swift in Sources */,
 				A45C132F1C7313890004D7F4 /* Constraint.swift in Sources */,
+				A45C13981C7BFC780004D7F4 /* HBHistoryMessageMannager.swift in Sources */,
 				A45C13331C7313890004D7F4 /* ConstraintMaker.swift in Sources */,
 				A45C13341C7313890004D7F4 /* ConstraintRelation.swift in Sources */,
+				A45C13951C7BF9E80004D7F4 /* HBHistoryMessage.swift in Sources */,
 				A45C13171C72D5CE0004D7F4 /* HBCommon.swift in Sources */,
 				A45C13301C7313890004D7F4 /* ConstraintAttributes.swift in Sources */,
 				A45C13721C75A8E70004D7F4 /* HBMainTabBarController.swift in Sources */,
@@ -506,8 +532,10 @@
 				A45C13311C7313890004D7F4 /* ConstraintDescription.swift in Sources */,
 				A45C13351C7313890004D7F4 /* Debugging.swift in Sources */,
 				A45C13391C7313890004D7F4 /* View+SnapKit.swift in Sources */,
+				A4EA183D1C7C579B0028E62A /* HBAddContactViewController.swift in Sources */,
 				A45C13371C7313890004D7F4 /* LayoutConstraint.swift in Sources */,
 				A45C135D1C756E200004D7F4 /* HBContactsViewController.swift in Sources */,
+				A45C13891C7BF61F0004D7F4 /* HBCoreModel.xcdatamodeld in Sources */,
 				A45C13321C7313890004D7F4 /* ConstraintItem.swift in Sources */,
 				A45C133C1C732A310004D7F4 /* HBAuthViewController.swift in Sources */,
 				A45C13591C7472A70004D7F4 /* HBUserStatusDelegate.swift in Sources */,
@@ -677,6 +705,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A45C13871C7BF61F0004D7F4 /* HBCoreModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A45C13881C7BF61F0004D7F4 /* HBCoreModel.xcdatamodel */,
+			);
+			currentVersion = A45C13881C7BF61F0004D7F4 /* HBCoreModel.xcdatamodel */;
+			path = HBCoreModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A45C12E41C7168AA0004D7F4 /* Project object */;
 }

@@ -16,10 +16,8 @@ class HBLoginViewController: HBBaseViewController {
     var backColor: UIColor? {
         set {
             _backColor = newValue
-            NSLog("set")
         }
         get {
-            NSLog("get")
             return _backColor!
         }
     }

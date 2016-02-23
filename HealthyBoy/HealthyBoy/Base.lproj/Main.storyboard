@@ -214,6 +214,43 @@
             </objects>
             <point key="canvasLocation" x="1101" y="912"/>
         </scene>
+        <!--Add Contact View Controller-->
+        <scene sceneID="t43-xJ-3nI">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Ur9-9e-s6K" customClass="HBAddContactViewController" customModule="HealthyBoy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YTO-Zl-D60">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lcx-JW-3Zs">
+                                <rect key="frame" x="44" y="203" width="232" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99436390399999997" green="0.69892089999999996" blue="0.092799929269999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="添加"/>
+                                <connections>
+                                    <action selector="addBtnClick:" destination="Ur9-9e-s6K" eventType="touchUpInside" id="WuG-vo-CDm"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入好友名称" textAlignment="natural" minimumFontSize="17" id="rAG-DH-7Lg">
+                                <rect key="frame" x="44" y="158" width="232" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kdh-k2-jCK"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="addBtn" destination="lcx-JW-3Zs" id="js6-nz-FWI"/>
+                        <outlet property="contactName" destination="rAG-DH-7Lg" id="d8Q-YS-MlJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BnZ-hi-ul5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1101" y="-709"/>
+        </scene>
         <!--联系人-->
         <scene sceneID="GQR-1k-7Vn">
             <objects>
@@ -227,6 +264,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="L01-LK-Pf1" kind="push" identifier="contactsToChat" id="nX9-tm-QtJ"/>
+                        <segue destination="Ur9-9e-s6K" kind="push" identifier="contactsToAdd" id="d90-RX-e9R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qIp-s1-Aat" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,7 +11,7 @@ class HBAuthViewController: HBBaseViewController{
     @IBOutlet weak var pwdTF: UITextField!
     @IBOutlet weak var submitBtn: UIButton!
     override func viewDidLoad() {
-        accountTF.text = "lanping@object.local"
+        accountTF.text = "xiexiang@object.local"
         pwdTF.text = "123456"
         
         accountTF.delegate = self

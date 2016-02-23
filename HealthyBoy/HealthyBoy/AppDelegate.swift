@@ -67,6 +67,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         mes.addChild(sendTime)
         //发送消息
         self.xmppStream?.sendElement(mes)
+        
+        //保存消息
+        let manager = HBHistoryMessageMannager()
+        var msgModel = HBMessage()
+        
+        msgModel.from = fromUser
+        msgModel.to = toUser
+        msgModel.body = msg
+        msgModel.sendTime = sendTime.stringValue()
+        manager.addMessage(msgModel)
     }
     
     //链接服务器(查看服务器是否可连接)
@@ -209,14 +219,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
             }
             
             msg.from = message.from().user + "@" + message.from().domain
+            msg.to = message.to().user + "@" + message.to().domain
             
             if message.elementForName("sendTime") != nil {
                 msg.sendTime = message.elementForName("sendTime").stringValue()
             }
             
+            //保存消息
+            let manager = HBHistoryMessageMannager()
+            manager.addMessage(msg)
             
             //添加到消息代理中
             messageDelegate?.newMsg(msg)
+            
         }
     }
     

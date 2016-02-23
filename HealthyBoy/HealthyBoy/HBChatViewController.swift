@@ -6,9 +6,9 @@
 //  Copyright © 2016年 jszx. All rights reserved.
 //
 
+
 class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableViewDelegate {
-    var unreadList = [HBMessage]()               //所有未读消息
-    var currentFriendUnreadList = [HBMessage]()  //当前好友未读消息
+    var historyMessageList = [HBMessage]()        //当前正在聊天的好友所有聊天记录
     var name : String?                           //当前正在聊天的好友
     let tableView = UITableView()
     private let inputTF = UITextField()
@@ -18,11 +18,6 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         self.navTitle = name!
         super.viewDidLoad()
         
-        for msg in unreadList {
-            if msg.from == name {
-                currentFriendUnreadList.append(msg)
-            }
-        }
         
         inputMessageView.backgroundColor = UIColor.grayColor()
         self.view.addSubview(inputMessageView)
@@ -69,8 +64,8 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         
         tableView.dataSource = self
         tableView.delegate = self
-        if currentFriendUnreadList.count > 0 {
-            tableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: currentFriendUnreadList.count - 1, inSection: 0), atScrollPosition:UITableViewScrollPosition.Bottom,animated:true)
+        if historyMessageList.count > 0 {
+            tableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: historyMessageList.count - 1, inSection: 0), atScrollPosition:UITableViewScrollPosition.Bottom,animated:true)
         }
         
         
@@ -81,12 +76,23 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
     func senBtnClick() {
         let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appdelegate.sendMessage(inputTF.text!, fromUser: HBCenterController.sharedInstance().username!, toUser: name!)
+
         inputTF.text = ""
         inputTF.resignFirstResponder()
+        
+        let manager = HBHistoryMessageMannager()
+    
+        historyMessageList = manager.readMessage(name!)
+        
+        self.tableView.reloadData()
+        
+        //滚动到表格最后一行
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: historyMessageList.count - 1, inSection: 0), atScrollPosition:UITableViewScrollPosition.Bottom,animated:true)
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentFriendUnreadList.count
+        return historyMessageList.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let id = "chatCellId"
@@ -104,8 +110,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             messageLabel.numberOfLines = 0
             //有符号时计算rect需要设置
             messageLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-            //label最大宽度
-            messageLabel.preferredMaxLayoutWidth = (cell?.contentView.frame.size.width)! * 0.7
+
             cell?.contentView.addSubview(messageLabel)
             
             let messageBackgroundView = UIImageView()
@@ -117,40 +122,64 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         
         let messagelabel = cell?.contentView.viewWithTag(1) as! UILabel
         messagelabel.backgroundColor = UIColor.clearColor()
-        NSLog(currentFriendUnreadList[indexPath.row].body)
-        messagelabel.text = currentFriendUnreadList[indexPath.row].body
+
+        messagelabel.text = historyMessageList[indexPath.row].body
         
-        let rect = boundingTextRect(messagelabel.text!, font: messagelabel.font, size: CGSizeMake((cell?.contentView.frame.size.width)! * 0.7, 0))
+        let rect = boundingTextRect(messagelabel, size: CGSizeMake((cell?.contentView.frame.size.width)! * 0.7, CGFloat(MAXFLOAT)))
         
         let iconView = cell?.contentView.viewWithTag(3) as! UIImageView
-        iconView.image = UIImage(named: "xiaohua")
-        iconView.snp_remakeConstraints { (make) -> Void in
-            make.left.equalTo((cell?.contentView)!).offset(10)
-            make.bottom.equalTo(messagelabel).offset(20)
-        }
-        
-        
-        messagelabel.snp_remakeConstraints { (make) -> Void in
-            make.top.equalTo((cell?.contentView)!).offset(10)
-            make.left.equalTo(iconView.snp_right).offset(20)
-            make.height.equalTo(rect.height)
-        }
         
         let msgBackgroundView = cell?.contentView.viewWithTag(2) as! UIImageView
-        msgBackgroundView.image = UIImage(named: "yoububble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
+        
+        if historyMessageList[indexPath.row].from == name {
+            iconView.image = UIImage(named: "xiaohua")
+            iconView.snp_remakeConstraints { (make) -> Void in
+                make.left.equalTo((cell?.contentView)!).offset(10)
+                make.bottom.equalTo(messagelabel).offset(20)
+            }
+            
+            messagelabel.snp_remakeConstraints { (make) -> Void in
+                make.top.equalTo((cell?.contentView)!).offset(10)
+                make.left.equalTo(iconView.snp_right).offset(20)
+                make.height.equalTo(rect.height)
+                make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.7)
+            }
+            
+            msgBackgroundView.image = UIImage(named: "yoububble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
+            
+        } else {
+            iconView.image = UIImage(named: "xiaoming")
+            iconView.snp_remakeConstraints { (make) -> Void in
+                make.right.equalTo((cell?.contentView)!).offset(-10)
+                make.bottom.equalTo(messagelabel).offset(20)
+            }
+            
+            messagelabel.snp_remakeConstraints { (make) -> Void in
+                make.top.equalTo((cell?.contentView)!).offset(10)
+                make.right.equalTo(iconView.snp_left).offset(-20)
+                make.height.equalTo(rect.height)
+                make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.7)
+            }
+            
+            msgBackgroundView.image = UIImage(named: "mebubble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
+        }
+        
+        
         
         msgBackgroundView.snp_remakeConstraints { (make) -> Void in
             make.top.equalTo(messagelabel).offset(-5)
             make.bottom.equalTo(messagelabel).offset(10)
-            make.left.equalTo(messagelabel).offset(-15)
-            make.right.equalTo(messagelabel).offset(15)
+            make.left.equalTo(messagelabel).offset(-20)
+            make.right.equalTo(messagelabel).offset(25)
         }
+//        messagelabel.backgroundColor = UIColor.redColor()
+//        msgBackgroundView.backgroundColor = UIColor.greenColor()
     
         return cell!
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 500
+        return 100
     }
     
     //键盘遮挡输入框处理、autoLayout动画
@@ -186,7 +215,6 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
     deinit {
         NSLog("HBChatViewController deinit")
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        unreadList.removeAll()
-        currentFriendUnreadList.removeAll()
+        historyMessageList.removeAll()
     }
 }

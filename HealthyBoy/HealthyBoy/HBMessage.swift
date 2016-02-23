@@ -11,6 +11,7 @@ struct HBMessage {
     var sendTime = ""
     var body = ""
     var from = ""
+    var to   = ""
     var isComposing = false  //正在输入
     var isDelay = false     //离线
     var isMe = false        //自己的

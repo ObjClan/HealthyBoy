@@ -46,9 +46,13 @@ class HBBaseViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    func boundingTextRect(text : NSString,font : UIFont,size: CGSize)->CGRect{
+    func boundingTextRect(label : UILabel,size: CGSize)->CGRect{
      
-       return text.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: NSDictionary(objects: [font], forKeys: [NSFontAttributeName]) as? [String : AnyObject], context: nil)
+        let attributes = [NSFontAttributeName : label.font]
+        let option = NSStringDrawingOptions.UsesLineFragmentOrigin
+        let text:NSString = NSString(CString: (label.text?.cStringUsingEncoding(NSUTF8StringEncoding))!, encoding: NSUTF8StringEncoding)!
+        let rect = text.boundingRectWithSize(size, options: option, attributes: attributes, context: nil)
+        return rect
     }
     
     func backBtnClick() {
