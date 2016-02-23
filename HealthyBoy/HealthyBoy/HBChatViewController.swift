@@ -173,7 +173,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             make.left.equalTo(messagelabel).offset(-20)
             make.right.equalTo(messagelabel).offset(25)
         }
-        messagelabel.backgroundColor = UIColor.redColor()
+//        messagelabel.backgroundColor = UIColor.redColor()
 //        msgBackgroundView.backgroundColor = UIColor.greenColor()
     
         return cell!
