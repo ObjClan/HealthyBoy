@@ -37,9 +37,10 @@ class HBAuthViewController: HBBaseViewController{
     }
     @IBAction func submitBtnClick(sender: UIButton) {
         let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appdelegate.connect(accountTF.text!, password: pwdTF.text!)
+        let myUsername = accountTF.text! + "@" + HBCenterController.sharedInstance().domain
+        appdelegate.connect(myUsername, password: pwdTF.text!)
         
-        HBCenterController.sharedInstance().username = accountTF.text
+        HBCenterController.sharedInstance().username = myUsername
         self.performSegueWithIdentifier("loginAuthSegue", sender: self)
     }
     

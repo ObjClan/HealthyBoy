@@ -49,9 +49,9 @@ class HBBaseViewController: UIViewController,UITextFieldDelegate {
     func boundingTextRect(label : UILabel,size: CGSize)->CGRect{
      
         let attributes = [NSFontAttributeName : label.font]
-        let option = NSStringDrawingOptions.UsesLineFragmentOrigin
+        let option = HBSwiftUseObjectCBridge.getDrawingOptions()
         let text:NSString = NSString(CString: (label.text?.cStringUsingEncoding(NSUTF8StringEncoding))!, encoding: NSUTF8StringEncoding)!
-        let rect = text.boundingRectWithSize(size, options: option, attributes: attributes, context: nil)
+        let rect = text.boundingRectWithSize(size, options:option, attributes: attributes, context: nil)
         return rect
     }
     

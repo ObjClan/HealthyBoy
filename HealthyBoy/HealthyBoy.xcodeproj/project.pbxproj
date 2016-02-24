@@ -66,6 +66,7 @@
 		A45C13951C7BF9E80004D7F4 /* HBHistoryMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13931C7BF9E80004D7F4 /* HBHistoryMessage.swift */; };
 		A45C13981C7BFC780004D7F4 /* HBHistoryMessageMannager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13971C7BFC780004D7F4 /* HBHistoryMessageMannager.swift */; };
 		A4EA183D1C7C579B0028E62A /* HBAddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA183C1C7C579B0028E62A /* HBAddContactViewController.swift */; };
+		A4EA18431C7D460C0028E62A /* HBSwiftUseObjectCBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EA18421C7D460C0028E62A /* HBSwiftUseObjectCBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,8 @@
 		A45C13931C7BF9E80004D7F4 /* HBHistoryMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBHistoryMessage.swift; sourceTree = "<group>"; };
 		A45C13971C7BFC780004D7F4 /* HBHistoryMessageMannager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBHistoryMessageMannager.swift; sourceTree = "<group>"; };
 		A4EA183C1C7C579B0028E62A /* HBAddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAddContactViewController.swift; sourceTree = "<group>"; };
+		A4EA18411C7D460C0028E62A /* HBSwiftUseObjectCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBSwiftUseObjectCBridge.h; sourceTree = "<group>"; };
+		A4EA18421C7D460C0028E62A /* HBSwiftUseObjectCBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBSwiftUseObjectCBridge.m; sourceTree = "<group>"; };
 		E5689B9AF37A17BFC23848B4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -196,6 +199,7 @@
 		A45C12EE1C7168AA0004D7F4 /* HealthyBoy */ = {
 			isa = PBXGroup;
 			children = (
+				A4EA183E1C7D42FD0028E62A /* bridge */,
 				A45C13961C7BFBF40004D7F4 /* coreData */,
 				A45C13601C7579AB0004D7F4 /* home */,
 				A45C135F1C7579910004D7F4 /* contacts */,
@@ -268,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				A45C12EF1C7168AA0004D7F4 /* AppDelegate.swift */,
-				A45C130C1C72BF7E0004D7F4 /* HealthyBoy-Bridging-Header.h */,
 			);
 			name = other;
 			sourceTree = "<group>";
@@ -363,6 +366,16 @@
 				A45C13931C7BF9E80004D7F4 /* HBHistoryMessage.swift */,
 			);
 			name = coreData;
+			sourceTree = "<group>";
+		};
+		A4EA183E1C7D42FD0028E62A /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				A4EA18411C7D460C0028E62A /* HBSwiftUseObjectCBridge.h */,
+				A4EA18421C7D460C0028E62A /* HBSwiftUseObjectCBridge.m */,
+				A45C130C1C72BF7E0004D7F4 /* HealthyBoy-Bridging-Header.h */,
+			);
+			name = bridge;
 			sourceTree = "<group>";
 		};
 		B3621B152587FDB3763957E5 /* Pods */ = {
@@ -542,6 +555,7 @@
 				A45C133A1C7313890004D7F4 /* ViewController+SnapKit.swift in Sources */,
 				A45C13741C76C98E0004D7F4 /* HBChatViewController.swift in Sources */,
 				A45C133E1C740ABD0004D7F4 /* HBBaseViewController.swift in Sources */,
+				A4EA18431C7D460C0028E62A /* HBSwiftUseObjectCBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

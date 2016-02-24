@@ -13,6 +13,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
     let tableView = UITableView()
     private let inputTF = UITextField()
     private let inputMessageView = UIView()
+    private var offscreenCells = NSMutableDictionary()
     
     override func viewDidLoad() {
         self.navTitle = name!
@@ -55,6 +56,10 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         
         self.view.addSubview(tableView)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
+        tableView.allowsSelection = false;
+
         tableView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(self.navView.snp_bottom)
             make.left.equalTo(view)
@@ -72,6 +77,7 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification , object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification , object: nil)
     }
+    
 
     func senBtnClick() {
         let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -111,7 +117,8 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             
             //有符号时计算rect需要设置
             messageLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-
+            messageLabel.sizeToFit()
+            
             cell?.contentView.addSubview(messageLabel)
             
             let messageBackgroundView = UIImageView()
@@ -123,43 +130,46 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         
         let messagelabel = cell?.contentView.viewWithTag(1) as! UILabel
         messagelabel.backgroundColor = UIColor.clearColor()
-
         messagelabel.text = historyMessageList[indexPath.row].body
-        
-        let rect = boundingTextRect(messagelabel, size: CGSizeMake((cell?.contentView.frame.size.width)! * 0.65, CGFloat(MAXFLOAT)))
-        
+
+//        let rect = boundingTextRect(messagelabel, size: CGSizeMake((cell?.contentView.frame.size.width)! * 0.65, CGFloat(MAXFLOAT)))
+
         let iconView = cell?.contentView.viewWithTag(3) as! UIImageView
         
         let msgBackgroundView = cell?.contentView.viewWithTag(2) as! UIImageView
         
         if historyMessageList[indexPath.row].from == name {
             iconView.image = UIImage(named: "xiaohua")
+            
             iconView.snp_remakeConstraints { (make) -> Void in
                 make.left.equalTo((cell?.contentView)!).offset(10)
                 make.bottom.equalTo(messagelabel).offset(20)
+                make.width.height.equalTo(50)
             }
             
             messagelabel.snp_remakeConstraints { (make) -> Void in
                 make.top.equalTo((cell?.contentView)!).offset(10)
                 make.left.equalTo(iconView.snp_right).offset(20)
-                make.height.equalTo(rect.height)
                 make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.65)
+//                make.height.equalTo(rect.size.height)
             }
             
             msgBackgroundView.image = UIImage(named: "yoububble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
             
         } else {
             iconView.image = UIImage(named: "xiaoming")
+          
             iconView.snp_remakeConstraints { (make) -> Void in
                 make.right.equalTo((cell?.contentView)!).offset(-10)
                 make.bottom.equalTo(messagelabel).offset(20)
+                make.width.height.equalTo(50)
             }
             
             messagelabel.snp_remakeConstraints { (make) -> Void in
                 make.top.equalTo((cell?.contentView)!).offset(10)
                 make.right.equalTo(iconView.snp_left).offset(-20)
-                make.height.equalTo(rect.height)
                 make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.65)
+//                make.height.equalTo(rect.size.height)
             }
             
             msgBackgroundView.image = UIImage(named: "mebubble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
@@ -175,14 +185,33 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         }
 //        messagelabel.backgroundColor = UIColor.redColor()
 //        msgBackgroundView.backgroundColor = UIColor.greenColor()
+        
+//        cell!.setNeedsUpdateConstraints()
+//        cell!.updateConstraintsIfNeeded()
     
         return cell!
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//
+////        let id = "chatCellId"
+////        
+////        let cell = tableView.dequeueReusableCellWithIdentifier(id, forIndexPath: indexPath)
+////
+////        cell.setNeedsUpdateConstraints()
+////        cell.updateConstraintsIfNeeded()
+////        
+////        cell.bounds = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds))
+////        
+////        cell.setNeedsLayout()
+////        cell.layoutIfNeeded()
+////        
+////        return cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height + 1
+//        return UITableViewAutomaticDimension
         return 100
+//
     }
-    
+
     //键盘遮挡输入框处理、autoLayout动画
     
     func keyboardWillShow(info: NSNotification){

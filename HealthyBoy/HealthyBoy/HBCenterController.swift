@@ -7,8 +7,10 @@
 //
 
 class HBCenterController {
-    internal let hostName = "10.0.0.107"
+    internal let hostName = "10.8.3.222"
     internal let domain = "object.local"
+//    internal let hostName = "10.0.0.107"
+//    internal let domain = "object"
     var username: String?
     //单例
     private static let _sharedInstance = HBCenterController()
