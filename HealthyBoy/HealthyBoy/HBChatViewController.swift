@@ -19,11 +19,16 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
     private let iconSize = CGSizeMake(50, 50) //头像的尺寸
     private let marge = 10.0 as CGFloat       //头像到左右的边距
     
+    var isScrollLastRow = true
+    
     override func viewDidLoad() {
+        
         self.navTitle = name!
+        
+        isScrollLastRow = true
+
         super.viewDidLoad()
-        
-        
+    
         inputMessageView.backgroundColor = UIColor.grayColor()
         self.view.addSubview(inputMessageView)
         inputMessageView.snp_makeConstraints { (make) -> Void in
@@ -78,13 +83,6 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification , object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if historyMessageList.count > 0 {
-            tableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: historyMessageList.count - 1, inSection: 0), atScrollPosition:UITableViewScrollPosition.Bottom,animated:true)
-        }
-    }
-    
-
     func senBtnClick() {
         let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appdelegate.sendMessage(inputTF.text!, fromUser: HBCenterController.sharedInstance().username!, toUser: name!)
@@ -96,10 +94,9 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
     
         historyMessageList = manager.readMessage(name!)
         
-        self.tableView.reloadData()
+        isScrollLastRow = true
         
-        //滚动到表格最后一行
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: historyMessageList.count - 1, inSection: 0), atScrollPosition:UITableViewScrollPosition.Bottom,animated:true)
+        self.tableView.reloadData()
         
     }
     
@@ -119,7 +116,6 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             
             let messageLabel = UILabel()
             messageLabel.tag = 1
-            messageLabel.numberOfLines = 1
             
             //有符号时计算rect需要设置
             messageLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
@@ -222,7 +218,21 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             let rect = boundingTextRect(label, size: CGSizeMake(maxMsgLabWidth, CGFloat(MAXFLOAT)))
             return rect.height + iconSize.height * 0.5 + marge * 2
     }
-
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        //如果是可见的最后一个cell
+        if indexPath.row == tableView.indexPathsForVisibleRows?.last?.row && isScrollLastRow == true {
+            
+            isScrollLastRow = false
+            
+            //滚动到最后一行
+            
+            tableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: historyMessageList.count - 1, inSection: 0), atScrollPosition:UITableViewScrollPosition.Bottom,animated:false)
+            
+        }
+    }
+    
     //键盘遮挡输入框处理、autoLayout动画
     
     func keyboardWillShow(info: NSNotification){

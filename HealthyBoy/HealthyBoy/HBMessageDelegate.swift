@@ -7,6 +7,6 @@
 //
 
 //消息代理
-protocol HBMessageDelegate {
+protocol HBMessageDelegate : class {
     func newMsg(aMsg : HBMessage)
 }

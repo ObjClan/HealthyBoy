@@ -67,6 +67,7 @@
 		A45C13981C7BFC780004D7F4 /* HBHistoryMessageMannager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C13971C7BFC780004D7F4 /* HBHistoryMessageMannager.swift */; };
 		A4EA183D1C7C579B0028E62A /* HBAddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA183C1C7C579B0028E62A /* HBAddContactViewController.swift */; };
 		A4EA18431C7D460C0028E62A /* HBSwiftUseObjectCBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EA18421C7D460C0028E62A /* HBSwiftUseObjectCBridge.m */; };
+		A4EA18681C7EE3180028E62A /* HBLoginResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA18671C7EE3180028E62A /* HBLoginResultDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,7 @@
 		A4EA183C1C7C579B0028E62A /* HBAddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBAddContactViewController.swift; sourceTree = "<group>"; };
 		A4EA18411C7D460C0028E62A /* HBSwiftUseObjectCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBSwiftUseObjectCBridge.h; sourceTree = "<group>"; };
 		A4EA18421C7D460C0028E62A /* HBSwiftUseObjectCBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBSwiftUseObjectCBridge.m; sourceTree = "<group>"; };
+		A4EA18671C7EE3180028E62A /* HBLoginResultDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBLoginResultDelegate.swift; sourceTree = "<group>"; };
 		E5689B9AF37A17BFC23848B4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -264,6 +266,7 @@
 			children = (
 				A45C13031C716B730004D7F4 /* HBLoginViewController.swift */,
 				A45C133B1C732A310004D7F4 /* HBAuthViewController.swift */,
+				A4EA18671C7EE3180028E62A /* HBLoginResultDelegate.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 			files = (
 				A45C13941C7BF9E80004D7F4 /* HBHistoryMessage+CoreDataProperties.swift in Sources */,
 				A45C13361C7313890004D7F4 /* EdgeInsets.swift in Sources */,
+				A4EA18681C7EE3180028E62A /* HBLoginResultDelegate.swift in Sources */,
 				A45C132F1C7313890004D7F4 /* Constraint.swift in Sources */,
 				A45C13981C7BFC780004D7F4 /* HBHistoryMessageMannager.swift in Sources */,
 				A45C13331C7313890004D7F4 /* ConstraintMaker.swift in Sources */,

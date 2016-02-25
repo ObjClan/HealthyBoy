@@ -7,6 +7,6 @@
 //
 
 //状态代理
-protocol HBUserStatusDelegate {
+protocol HBUserStatusDelegate : class {
     func receiveFriendStatus(status : HBUserStatus)
 }

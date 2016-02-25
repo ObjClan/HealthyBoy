@@ -7,11 +7,15 @@
 //
 
 class HBCenterController {
-    internal let hostName = "10.8.3.222"
-    internal let domain = "object.local"
+    let hostName = "10.8.3.222"
+    let domain = "object.local"
+  
 //    internal let hostName = "10.0.0.107"
 //    internal let domain = "object"
     var username: String?
+    
+    private var timer = NSTimer()
+    private var pwd: String?
     //单例
     private static let _sharedInstance = HBCenterController()
     class func sharedInstance() ->HBCenterController {
@@ -21,5 +25,7 @@ class HBCenterController {
     private init(){
     
     }
+    
+    
 }
 

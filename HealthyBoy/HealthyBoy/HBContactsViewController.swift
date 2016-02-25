@@ -89,6 +89,10 @@ class HBContactsViewController: HBBaseViewController,UITableViewDataSource,UITab
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        if appdelegate.isOnLine() == false {
+            NSLog("断开连接，请重新登录")
+            return
+        }
         toChatFriend = userList[indexPath.row]["name"] as? String
 
         if unreadMessageList.count > 0 {
@@ -153,10 +157,11 @@ class HBContactsViewController: HBBaseViewController,UITableViewDataSource,UITab
                     } else {
                         isChating = false
                     }
+                    
+                    currentChatController?.isScrollLastRow = true
+                    
                     currentChatController?.tableView.reloadData()
                     
-                    //滚动到表格最后一行
-                    currentChatController?.tableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: currentChatController!.historyMessageList.count - 1, inSection: 0), atScrollPosition:UITableViewScrollPosition.Bottom,animated:true)
                 }
             }
             

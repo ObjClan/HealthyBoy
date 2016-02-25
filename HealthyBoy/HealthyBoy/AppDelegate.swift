@@ -20,11 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     var userList = NSMutableArray() //好友列表
     
     //状态代理
-    var statusDelegate: HBUserStatusDelegate?
+    weak var statusDelegate: HBUserStatusDelegate?
     
     //消息代理
-    var messageDelegate: HBMessageDelegate?
+    weak var messageDelegate: HBMessageDelegate?
     
+    //登录结果代理
+    weak var loginResultDelegate: HBLoginResultDelegate?
     
     //建立通道
     func buildStream() {
@@ -42,6 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     func goOffline() {
         let presence = XMPPPresence(type: "unavailabe")
         xmppStream?.sendElement(presence)
+    }
+    
+    //当前用户是否在线
+    func isOnLine()->Bool {
+        return (xmppStream?.isConnected())!
     }
     
     func sendMessage(msg: String, fromUser: String,toUser: String) {
@@ -94,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
             try xmppStream?.connectWithTimeout(20)
         } catch {
            print(error)
+            self.loginResultDelegate?.loginResult(1, message: "连接失败")
         }
         
         pwd = password
@@ -101,6 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         return false
     }
     
+
     //断开连接
     func disConnect() {
         if xmppStream != nil && xmppStream!.isConnected() {
@@ -109,6 +118,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         }
         
     }
+    
+
     
     //连接成功
     func xmppStreamDidConnect(sender: XMPPStream!) {
@@ -122,13 +133,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         }
     }
     
+    //连接失败
+    func xmppStreamDidDisconnect(sender: XMPPStream!, withError error: NSError!) {
+        var message: String?
+        if error.code == 51 || error.code == 57 {
+            message = "连接失败，请检查网络连接"
+        } else if error.code == 7 {
+            message = "连接失败，sroket断开"
+        } else {
+            message = "连接失败，未知错误"
+        }
+        self.loginResultDelegate?.loginResult(1, message: message!)
+    }
+    
+    //连接超时
+    func xmppStreamConnectDidTimeout(sender: XMPPStream!) {
+        self.loginResultDelegate?.loginResult(1, message: "连接超时")
+    }
+    
     //验证成功
     func xmppStreamDidAuthenticate(sender: XMPPStream!) {
         NSLog("验证成功")
         
+        self.loginResultDelegate?.loginResult(0, message: "success")
         //上线
         goOnline()
         
+    }
+    
+    //验证失败
+    func xmppStream(sender: XMPPStream!, didNotAuthenticate error: DDXMLElement!) {
+        self.loginResultDelegate?.loginResult(1, message: "验证失败,用户名或密码错误")
     }
 
     
