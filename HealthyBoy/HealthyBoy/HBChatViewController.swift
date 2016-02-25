@@ -128,11 +128,15 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
             
         }
         
+        let labelWidth = (cell?.contentView.frame.size.width)! * 0.65
+        let iconSize = CGSizeMake(50, 50)
+        let marge = 10.0 as CGFloat
+        
         let messagelabel = cell?.contentView.viewWithTag(1) as! UILabel
         messagelabel.backgroundColor = UIColor.clearColor()
         messagelabel.text = historyMessageList[indexPath.row].body
 
-//        let rect = boundingTextRect(messagelabel, size: CGSizeMake((cell?.contentView.frame.size.width)! * 0.65, CGFloat(MAXFLOAT)))
+        let rect = boundingTextRect(messagelabel, size: CGSizeMake(labelWidth, CGFloat(MAXFLOAT)))
 
         let iconView = cell?.contentView.viewWithTag(3) as! UIImageView
         
@@ -140,76 +144,34 @@ class HBChatViewController: HBBaseViewController,UITableViewDataSource,UITableVi
         
         if historyMessageList[indexPath.row].from == name {
             iconView.image = UIImage(named: "xiaohua")
-            
-            iconView.snp_remakeConstraints { (make) -> Void in
-                make.left.equalTo((cell?.contentView)!).offset(10)
-                make.bottom.equalTo(messagelabel).offset(20)
-                make.width.height.equalTo(50)
-            }
-            
-            messagelabel.snp_remakeConstraints { (make) -> Void in
-                make.top.equalTo((cell?.contentView)!).offset(10)
-                make.left.equalTo(iconView.snp_right).offset(20)
-                make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.65)
-//                make.height.equalTo(rect.size.height)
-            }
+            messagelabel.frame = CGRectMake(marge + iconSize.width + marge, 20, labelWidth, rect.height)
+            iconView.bounds = CGRectMake(0, 0, iconSize.width,iconSize.height)
+            iconView.center = CGPointMake(marge + iconSize.width * 0.5, CGRectGetMaxY(messagelabel.frame))
+            msgBackgroundView.center = messagelabel.center
+            msgBackgroundView.bounds = CGRectMake(0, 0, CGRectGetWidth(messagelabel.frame) + 20, CGRectGetHeight(messagelabel.frame) + 20)
             
             msgBackgroundView.image = UIImage(named: "yoububble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
             
         } else {
             iconView.image = UIImage(named: "xiaoming")
-          
-            iconView.snp_remakeConstraints { (make) -> Void in
-                make.right.equalTo((cell?.contentView)!).offset(-10)
-                make.bottom.equalTo(messagelabel).offset(20)
-                make.width.height.equalTo(50)
-            }
-            
-            messagelabel.snp_remakeConstraints { (make) -> Void in
-                make.top.equalTo((cell?.contentView)!).offset(10)
-                make.right.equalTo(iconView.snp_left).offset(-20)
-                make.width.lessThanOrEqualTo((cell?.contentView.frame.size.width)! * 0.65)
-//                make.height.equalTo(rect.size.height)
-            }
+            let originX = HBCommon.getScreenWidth() - (marge + iconSize.width + marge) - labelWidth
+            messagelabel.frame = CGRectMake(originX, 20, labelWidth, rect.height)
+            iconView.bounds = CGRectMake(0, 0, iconSize.width, iconSize.height)
+            iconView.center = CGPointMake(HBCommon.getScreenWidth() - marge - iconSize.width * 0.5, CGRectGetMaxY(messagelabel.frame))
+            msgBackgroundView.center = messagelabel.center
+            msgBackgroundView.bounds = CGRectMake(0, 0, CGRectGetWidth(messagelabel.frame) + 20, CGRectGetHeight(messagelabel.frame) + 20)
             
             msgBackgroundView.image = UIImage(named: "mebubble")?.stretchableImageWithLeftCapWidth(21, topCapHeight: 14)
         }
         
-        
-        
-        msgBackgroundView.snp_remakeConstraints { (make) -> Void in
-            make.top.equalTo(messagelabel).offset(-5)
-            make.bottom.equalTo(messagelabel).offset(10)
-            make.left.equalTo(messagelabel).offset(-20)
-            make.right.equalTo(messagelabel).offset(25)
-        }
-//        messagelabel.backgroundColor = UIColor.redColor()
-//        msgBackgroundView.backgroundColor = UIColor.greenColor()
-        
-//        cell!.setNeedsUpdateConstraints()
-//        cell!.updateConstraintsIfNeeded()
-    
         return cell!
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//
-////        let id = "chatCellId"
-////        
-////        let cell = tableView.dequeueReusableCellWithIdentifier(id, forIndexPath: indexPath)
-////
-////        cell.setNeedsUpdateConstraints()
-////        cell.updateConstraintsIfNeeded()
-////        
-////        cell.bounds = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds))
-////        
-////        cell.setNeedsLayout()
-////        cell.layoutIfNeeded()
-////        
-////        return cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height + 1
-//        return UITableViewAutomaticDimension
-        return 100
-//
+            let label = UILabel()
+            label.text  = historyMessageList[indexPath.row].body
+            let rect = boundingTextRect(label, size: CGSizeMake(HBCommon.getScreenWidth() * 0.65, CGFloat(MAXFLOAT)))
+            return rect.height + 20 + 25
     }
 
     //键盘遮挡输入框处理、autoLayout动画
