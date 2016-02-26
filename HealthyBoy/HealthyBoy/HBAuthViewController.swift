@@ -74,6 +74,7 @@ class HBAuthViewController: HBBaseViewController,HBLoginResultDelegate,UIAlertVi
         }
     }
     
+    //
     func openCheckLoginStatusLoop() {
         
         isOpenCheckLogin = true
@@ -85,8 +86,6 @@ class HBAuthViewController: HBBaseViewController,HBLoginResultDelegate,UIAlertVi
     
     func checkLoginStatus() {
         
-        NSLog("\(NSThread.currentThread())" + "," +  "\(NSThread.currentThread().name)")
-        
         let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if appdelegate.isOnLine() == false {
             
@@ -97,7 +96,8 @@ class HBAuthViewController: HBBaseViewController,HBLoginResultDelegate,UIAlertVi
             alert.show()
 
         } else {
-            NSLog("连接成功")
+//            NSLog("\(NSThread.currentThread())" + "," +  "\(NSThread.currentThread().name)")
+//            NSLog("连接成功")
         }
     }
     

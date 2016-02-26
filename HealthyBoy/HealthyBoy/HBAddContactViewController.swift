@@ -35,7 +35,8 @@ class HBAddContactViewController: HBBaseViewController {
     }
     
     @IBAction func addBtnClick(sender: UIButton) {
-        self.navigationController?.popViewControllerAnimated(true)
+        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appdelegate.addFriendSubscribe(contactName.text!)
     }
     
     //键盘遮挡输入框处理、autoLayout动画

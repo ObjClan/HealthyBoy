@@ -10,14 +10,33 @@ import UIKit
 import XMPPFramework
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate,XMPPRosterDelegate ,UIAlertViewDelegate{
 
     var window: UIWindow?
-
-    var xmppStream : XMPPStream?
+    var _xmppStream : XMPPStream?
+    var xmppStream : XMPPStream?{
+        set{
+            _xmppStream = newValue
+        }
+        get{
+            if _xmppStream == nil {
+                _xmppStream = XMPPStream()
+                _xmppStream?.addDelegate(self, delegateQueue: dispatch_get_main_queue())
+                
+                xmppRoster = XMPPRoster.init(rosterStorage: XMPPRosterCoreDataStorage.sharedInstance())
+                xmppRoster?.activate(_xmppStream)
+                xmppRoster?.addDelegate(self, delegateQueue: dispatch_get_main_queue())
+            }
+            return _xmppStream
+        }
+    }
+    
+    var xmppRoster : XMPPRoster?
+    
     var isOpen = false
     var pwd = ""
     var userList = NSMutableArray() //好友列表
+    var currentAddFirend = "" //正在申请添加好友
     
     //状态代理
     weak var statusDelegate: HBUserStatusDelegate?
@@ -27,12 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     
     //登录结果代理
     weak var loginResultDelegate: HBLoginResultDelegate?
-    
-    //建立通道
-    func buildStream() {
-        xmppStream = XMPPStream()
-        xmppStream?.addDelegate(self, delegateQueue: dispatch_get_main_queue())
-    }
     
     //发送上线状态
     func goOnline() {
@@ -51,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         return (xmppStream?.isConnected())!
     }
     
+    //发送信息
     func sendMessage(msg: String, fromUser: String,toUser: String) {
         //XMPPFramework主要是通过KissXML来生成XML文件
         //生成<body>文档
@@ -86,9 +100,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         manager.addMessage(msgModel)
     }
     
+    //添加好友
+    func addFriendSubscribe(name : String) {
+        let jid = XMPPJID.jidWithString("\(name)@\(HBCenterController.sharedInstance().domain)")
+        xmppRoster!.subscribePresenceToUser(jid)
+    }
+    
+    //删除好友,拒绝加好友，或者加好友后需要删除 
+    func removeOrRefuseBuddy(name : String) {
+        let jid = XMPPJID.jidWithString(name)
+        xmppRoster!.removeUser(jid)
+    }
+    
     //链接服务器(查看服务器是否可连接)
     func connect(user : String!,password : String!) ->Bool {
-        buildStream()
+
         //通道已连接
         if xmppStream!.isConnected() {
             return true
@@ -120,7 +146,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     }
     
 
-    
+/** *******************************通道相关代理方法********************************/
+     
     //连接成功
     func xmppStreamDidConnect(sender: XMPPStream!) {
         NSLog("服务器连接成功")
@@ -165,7 +192,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     func xmppStream(sender: XMPPStream!, didNotAuthenticate error: DDXMLElement!) {
         self.loginResultDelegate?.loginResult(1, message: "验证失败,用户名或密码错误")
     }
-
     
     //收到状态
     func xmppStream(sender: XMPPStream!, didReceivePresence presence: XMPPPresence!) {
@@ -184,6 +210,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         //状态类型
         let pType = presence.type()
         
+        if user == nil {
+            return
+        }
         //如果状态不是自己的
         if (user != myUser) {
            
@@ -222,9 +251,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
                 }
                 let userDict = ["name" : status.name, "status" : status.isOnline]
                 userList.addObject(userDict)
+                
+            //添加好友请求
+            } else if pType == "subscribe" {
+
+                
             }
+            
             //将好友上线状态添加到代理中
-            statusDelegate!.receiveFriendStatus(status)
+            if statusDelegate != nil {
+                statusDelegate!.receiveFriendStatus(status)
+            }
+            
         }
 
     }
@@ -271,35 +309,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     }
     
     
+/** *******************************花名册相关代理方法********************************/
+    
+    //收到添加好友请求
+    func xmppRoster(sender: XMPPRoster!, didReceivePresenceSubscriptionRequest presence: XMPPPresence!) {
+        
+        let presenceFrommUser = presence.from().user
+        currentAddFirend = presenceFrommUser + "@" + presence.from().domain
+
+        let message = "\(presenceFrommUser)请求加你为好友"
+        let jid = XMPPJID.jidWithString(currentAddFirend)
+        
+        let alert = UIAlertController.init(title: "好友请求", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let action1 = UIAlertAction.init(title: "同意", style: UIAlertActionStyle.Default) { (alert) -> Void in
+           self.xmppRoster?.acceptPresenceSubscriptionRequestFrom(jid, andAddToRoster: true)
+        }
+        let action2 = UIAlertAction.init(title: "拒绝", style: UIAlertActionStyle.Default) { (alert) -> Void in
+            self.xmppRoster?.rejectPresenceSubscriptionRequestFrom(jid)
+            self.removeOrRefuseBuddy(self.currentAddFirend)
+        }
+        alert.addAction(action1)
+        alert.addAction(action2)
+        self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    //开始接收好友列表
+    func xmppRosterDidBeginPopulating(sender: XMPPRoster!, withVersion version: String!) {
+        
+    }
+    
+    // 接收完毕
+    func xmppRosterDidEndPopulating(sender: XMPPRoster!) {
+        
+    }
+    
+    // 每次接收到一个好友就会走一次这个方法
+    func xmppRoster(sender: XMPPRoster!, didReceiveRosterItem item: DDXMLElement!) {
+        let jid = item.attributeForName("jid").stringValue()
+        let xmppjid = XMPPJID.jidWithString(jid)
+        let user = xmppjid.user + "@" + xmppjid.domain
+        
+        let userDict = ["name" : user, "status" : false]
+        
+        userList.addObject(userDict)
+        
+        NSLog("接受到好友列表：\(xmppjid.user)")
+    }
+    
+/** *******************************其他代理方法********************************/
+    
+    
+    
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
 
 }
 

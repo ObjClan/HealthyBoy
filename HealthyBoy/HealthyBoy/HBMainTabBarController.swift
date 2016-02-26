@@ -8,13 +8,11 @@
 
 
 class HBMainTabBarController: UITabBarController {
-    override func viewDidLoad() {
-        self.selectedIndex = 1
-//        self.selectedIndex = 0
-    }
-    override func viewDidAppear(animated: Bool) {
+//    override func viewDidLoad() {
 //        self.selectedIndex = 1
-        self.selectedIndex = 0
-    }
+//    }
+//    override func viewDidAppear(animated: Bool) {
+//        self.selectedIndex = 0
+//    }
 
 }
